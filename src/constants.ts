@@ -6,11 +6,11 @@ export const user = {
 export const brandName = "my portfolio"
 
 export const navLinks = [
-    { text: "about me", path: "about-me", icon: "/icons/about-me.svg" },
+    { text: "case study", path: "about-me", icon: "/icons/experience.svg" },
     { text: "designs", path: "designs", icon: "/icons/designs.svg" },
-    { text: "case study", path: "case-study", icon: "/icons/experience.svg" },
-    { text: "project", path: "project", icon: "/icons/projects.svg" },
-    { text: "contact", path: "contact", icon: "/icons/contact.svg" },
+    { text: "About Me", path: "https://shubham-sahu-dashboard.vercel.app/about", icon: "/icons/about-me.svg" },
+    { text: "project", path: "https://shubham-sahu-dashboard.vercel.app/projects", icon: "/icons/projects.svg" },
+    { text: "contact", path: "https://shubham-sahu-dashboard.vercel.app/contact", icon: "/icons/contact.svg" },
 ] as { text: string; path: SectionNames; icon: string; }[]
 
 export const sectionNames = ["greet", "about-me", "designs", "case-study", "project", "contact"] as const

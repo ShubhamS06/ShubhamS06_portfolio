@@ -37,7 +37,7 @@ button[data-is="toggler"] {
     font-weight: 500;
 }
 
-.navManuContent {
+.navDesktop {
     font-size: calc(var(--font-size-base) * 0.66);
     font-weight: 600;
     gap: 2rem;
@@ -47,8 +47,12 @@ button[data-is="toggler"] {
 .navLink {
     position: relative;
     font-size: 10px;
-    gap: .2rem;
+    gap: .75rem;
+    padding: .5rem .75rem;
     transition: background 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .navLink>img {
@@ -88,6 +92,112 @@ button[data-is="toggler"] {
 }
 
 
+.mobileMenu {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    z-index: 120;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .3s ease;
+}
+
+.mobileMenu[data-open="true"] {
+    pointer-events: auto;
+    opacity: 1;
+}
+
+.mobileBackdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+}
+
+.mobileSheet {
+    position: relative;
+    width: calc(100% - 1.5rem);
+    max-width: 26rem;
+    background: #1e1f20;
+    border-radius: 1.5rem 1.5rem 0 0;
+    padding: 1.5rem;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.35);
+    border: 1px solid #2c2c2e;
+    transform: translateY(100%);
+    transition: transform .35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mobileMenu[data-open="true"] .mobileSheet {
+    transform: translateY(0);
+}
+
+.mobileHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.mobileProfile {
+    display: flex;
+    gap: .75rem;
+    align-items: center;
+}
+
+.mobileProfile img {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.mobileProfile span {
+    font-size: .8rem;
+    color: #b0b0b0;
+}
+
+.closeButton {
+    border: none;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--color-white);
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.mobileNavLinks {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.mobileNavLinks .navLink {
+    width: 100%;
+    justify-content: flex-start;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    padding: .75rem 1rem;
+    flex-direction: row;
+    align-items: center;
+}
+
+.mobileNavLinks .navLink[data-active="true"]::after {
+    width: 100%;
+    aspect-ratio: unset;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+@media screen and (min-width: 701px) {
+    .mobileMenu {
+        display: none;
+    }
+}
+
 @media screen and (max-width: 700px) {
     button[data-is="toggler"] {
         /* transition: .3s all; */
@@ -100,5 +210,13 @@ button[data-is="toggler"] {
     .navManuContent {
         display: none;
         
+    }
+    .navDesktop {
+        display: none;
+    }
+    .navLink[data-active="true"]::after{
+        padding: 20px !important;
+        width: 80% !important;
+        color: transparent !important;
     }
 }
